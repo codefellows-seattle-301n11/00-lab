@@ -20,7 +20,7 @@ After that, follow the instructions below to fork and clone this repository, and
 4. Create a copy of the `starter-code` directory with the copy's name being the your first name and last name (`cp -r starter-code firstname-lastname`) and navigate into that directory (ex: `cd sam-hamm`).
 5. Read through the following reference materials for each of these topics.
 6. See the adjacent `examples.js` file to compare examples of these features with the notation you have been using previously.
-7. In the adjacent `starter-code/js/app.js` file convert code to use ES6 notation when possible, find the **TODO** items and complete them using ES6 notation. Also, complete the **COMMENT** items that are in that file.
+7. In the adjacent `starter-code/js/app.js` file convert code to use ES6 notation when possible .Find the **TODO** items and complete them using ES6 notation. Also, complete the **COMMENT** items that are in that file.
 8. When finished, push your branch back to your fork on GitHub, and merge it into master. Then, make a pull request back from your branch to the original Code Fellows repo. If you are unsure what to do, ask a TA or instructor.
 
 ## Template literals
