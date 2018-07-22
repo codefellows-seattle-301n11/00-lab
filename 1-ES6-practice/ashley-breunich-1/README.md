@@ -22,10 +22,10 @@ Follow these instructions carefully and in order.
 
 ##### Investigate how `let` and `const` are now used in the code. Where did you need to convert `const` into `let` to make the code work? Can you identify any patterns/similarities?
 
-(Put your answer here)
+I had to convert const into let for each dynamic variable. For instance, in all for loops the variable needs to be let. Since we add 1 to each loop, the variable will continue to increase and will not be constant. I also needed to change the counter to let for the same reason. The counter continues to increase each time someone clicks on an image and is therefore not constant. 
 
 ---
 
 ##### How did it go with making the adaptation from concatenations to template literal notation? Do you think you'll mostly use template literal notation from now on?
 
-(Put your answer here)
+Yes! I really like template literal notation. It is so much easier to read and write. I like this way better than concatenating each string. 
