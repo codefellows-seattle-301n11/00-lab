@@ -22,10 +22,10 @@ Follow these instructions carefully and in order.
 
 ##### Investigate how `let` and `const` are now used in the code. Where did you need to convert `const` into `let` to make the code work? Can you identify any patterns/similarities?
 
-(Put your answer here)
+When a variable value needs to be reassigned, such as in an iterator, it needs to be let rather than const. However it is worth noting that if you are creating a single object whose properties can be changed, a const can work in that case. If you need to re-assign it to an entirely new object, then you need to use let.
 
 ---
 
 ##### How did it go with making the adaptation from concatenations to template literal notation? Do you think you'll mostly use template literal notation from now on?
 
-(Put your answer here)
+I think template literal notation is cleaner and more readable. It makes sense to migrate to this syntax. 
