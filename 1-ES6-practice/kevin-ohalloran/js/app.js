@@ -3,16 +3,16 @@
 let names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 let allProducts = [];
-const container = document.getElementById('image_container');
-const viewed = [];
-const labels = [];
-const pics = [document.getElementById('left'),
+let container = document.getElementById('image_container');
+let viewed = [];
+let labels = [];
+let pics = [document.getElementById('left'),
                 document.getElementById('center'), //eslint-disable-line
                 document.getElementById('right')]; //eslint-disable-line
-const list = document.getElementById('productlist');
+let list = document.getElementById('productlist');
 let totalClicks = 0;
-const views = [];
-const votes = [];
+let views = [];
+let votes = [];
 
 function Product(name) {
   this.name = name;
@@ -29,19 +29,18 @@ function makeRandom() {
 function displayPics(){
   // roll for three random indexes
   while(viewed.length < 6){
-    var rando = makeRandom();
+    let rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
   }
-  console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // The line 37 returns an error when rando is declared via let, is because rando is now scoped to the block inside the while statement and is no longer available outside that block. Unlike a typical local variable declared using var, a let-declared variable is scoped strictly to the immediate block that holds it, whereas a var variable is available throughout the lexical scope in which it was declared.
+  // let is scoped to the containing block, which means rando is no longer available here. A normally declared var variable, on the otherhand, is lexically scoped, and so is available throughout the function wherein it is declared. 
   console.log(viewed);
 
   // To the DOM and beyond!
   for (var i = 0; i < 3; i++){
-    const temp = viewed.shift();
+    let temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -71,8 +70,8 @@ function handleClick(event) {
 }
 
 function showList() {
-  for(let i = 0; i < allProducts.length; i++) {
-    const liEl = document.createElement('li');
+  for(var i = 0; i < allProducts.length; i++) {
+    var liEl = document.createElement('li');
     liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
     list.appendChild(liEl);
   }
@@ -89,7 +88,6 @@ function makeChartData(){
 function makeChart(){
   makeChartData();
   let ctx = document.getElementById('chartypants').getContext('2d');
-  let Chart = {};
   new Chart(ctx, {
     type: 'bar',
     data: {
@@ -129,7 +127,7 @@ if(localStorage.busmall){
   allProducts = JSON.parse(localStorage.busmall);
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
-  for(var i = 0; i < names.length; i++) {
+  for(let i = 0; i < names.length; i++) {
     new Product(names[i]);
   }
   console.log(allProducts);
