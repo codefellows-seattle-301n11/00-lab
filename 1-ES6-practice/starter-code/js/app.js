@@ -16,7 +16,7 @@ var votes = [];
 
 function Product(name) {
   this.name = name;
-  this.path = 'img/' + name + '.jpg';
+  this.path = `img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
@@ -36,7 +36,7 @@ function displayPics(){
   }
   console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // PUT YOUR RESPONSE IN THIS COMMENT
+  // PUT YOUR RESPONSE IN THIS COMMENT Let makes it available only in the scope of the function
   console.log(viewed)
 
   // To the DOM and beyond!
