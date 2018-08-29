@@ -16,7 +16,7 @@ let votes = [];
 
 function Product(name) {
   this.name = name;
-  this.path = 'img/' + name + '.jpg';
+  this.path = `img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
@@ -34,10 +34,9 @@ function displayPics() {
       viewed.push(rando);
     }
   }
-  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the constiable declaration from `var to `let`.
-  // it states that rando is not defined because its not global.let was in the function it is a local variable but since the console log is out side it is not seeing it.
-  // PUT YOUR RESPONSE IN THIS COMMENT
-  console.log(viewed)
+  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
+  // PUT YOUR RESPONSE IN THIS COMMENT Let makes it available only in the scope of the function
+  console.log(viewed);
 
   // To the DOM and beyond!
   for (let i = 0; i < 3; i++) {
@@ -125,7 +124,7 @@ document.getElementById('bus').addEventListener('click', function () {
 
 if (localStorage.busmall) {
   console.log('Local storage data exists');
-  allProducts = JSON.parse(localStorage.busmall)
+  allProducts = JSON.parse(localStorage.busmall);
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
   for (let i = 0; i < names.length; i++) {
