@@ -24,8 +24,11 @@ Follow these instructions carefully and in order.
 
 (Put your answer here)
 
+
 ---
 
 ##### How did it go with making the adaptation from concatenations to template literal notation? Do you think you'll mostly use template literal notation from now on?
 
 (Put your answer here)
+
+
