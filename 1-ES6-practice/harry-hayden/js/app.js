@@ -1,22 +1,29 @@
 'use strict';
 
-var names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+//changed var to const
+const names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
-var allProducts = [];
-var container = document.getElementById('image_container');
-var viewed = [];
-var labels = [];
-var pics = [document.getElementById('left'),
+//changed var to let
+let allProducts = [];
+
+//changed var to const and let 
+const container = document.getElementById('image_container');
+const viewed = [];
+const labels = [];
+const pics = [document.getElementById('left'),
                 document.getElementById('center'), //eslint-disable-line
                 document.getElementById('right')]; //eslint-disable-line
-var list = document.getElementById('productlist');
-var totalClicks = 0;
-var views = [];
-var votes = [];
+const list = document.getElementById('productlist');
+let totalClicks = 0;
+const views = [];
+const votes = [];
 
 function Product(name) {
   this.name = name;
-  this.path = 'img/' + name + '.jpg';
+
+  // this.path = 'img/' + name + '.jpg';
+  this.path = `img/${name}.jpg`;
+
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
@@ -29,19 +36,21 @@ function makeRandom() {
 function displayPics(){
   // roll for three random indexes
   while(viewed.length < 6){
-    var rando = makeRandom();
+    //replace var with const
+    const rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
   }
   console.log(rando);
-  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // PUT YOUR RESPONSE IN THIS COMMENT
+  // TODONE: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
+  // PUT YOUR RESPONSE IN THIS COMMENT. Rando has been declared locally and will not be available globally
   console.log(viewed)
 
   // To the DOM and beyond!
-  for (var i = 0; i < 3; i++){
-    var temp = viewed.shift();
+  //replace var with let and const
+  for (let i = 0; i < 3; i++){
+    const temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -59,10 +68,12 @@ function handleClick(event) {
     showList();
     makeChart();
   }
-  for(var i = 0; i < names.length; i++){
+  //replace var with let
+  for(let i = 0; i < names.length; i++){
     if(event.target.id === allProducts[i].name) {
       allProducts[i].votes += 1;
-      console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
+      // console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
+      console.log(event.target.id + ` has ${allProducts[i].votes} votes in ${allProducts[i].views} views`);
     }
   }
   localStorage.busmall = JSON.stringify(allProducts);
@@ -70,10 +81,13 @@ function handleClick(event) {
   displayPics();
 }
 
+//replace var with let and const
 function showList() {
-  for(var i = 0; i < allProducts.length; i++) {
-    var liEl = document.createElement('li');
-    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
+  for(let i = 0; i < allProducts.length; i++) {
+    const liEl = document.createElement('li');
+    // liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
+    // list.appendChild(liEl);
+    liEl.textContent = `${allProducts[i].name} has ${allProducts[i].votes} votes in ${allProducts[i].views} views`;
     list.appendChild(liEl);
   }
 }
@@ -86,9 +100,10 @@ function makeChartData(){
   });
 }
 
+//replace var with const
 function makeChart(){
   makeChartData();
-  var ctx = document.getElementById('chartypants').getContext('2d');
+  const ctx = document.getElementById('chartypants').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
     data: {
